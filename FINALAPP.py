@@ -136,7 +136,7 @@ else:
     # --- DATA LOADING ---
     @st.cache_data
     def load_nodes():
-        path = r"D:\cancer_rna_1\ml_datasets\INDIVIDUAL_CANCER_MASTERS.csv" 
+        path = "INDIVIDUAL_CANCER_MASTERS.csv"
         try:
             df_raw = pd.read_csv(path)
             max_tms = df_raw['triple_metric_score'].max()
@@ -170,7 +170,7 @@ else:
 
     @st.cache_data
     def load_edges():
-        path = r"D:\cancer_rna_1\ml_datasets\REAL_BIOLOGICAL_EDGES.csv"
+       path = "REAL_BIOLOGICAL_EDGES.csv"
         try: return pd.read_csv(path)
         except: return pd.DataFrame()
 

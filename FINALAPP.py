@@ -133,10 +133,11 @@ else:
             return res.json()['KEGG_2021_Human'] if res.ok else None
         except: return None
 
-    # --- DATA LOADING ---
+    # --- DATA LOADING (Updated for Cloud Deployment) ---
     @st.cache_data
     def load_nodes():
-        path = "INDIVIDUAL_CANCER_MASTERS.csv"
+        # Removed the D:\ path so it looks inside your GitHub folder
+        path = "INDIVIDUAL_CANCER_MASTERS.csv" 
         try:
             df_raw = pd.read_csv(path)
             max_tms = df_raw['triple_metric_score'].max()
@@ -170,12 +171,12 @@ else:
 
     @st.cache_data
     def load_edges():
-       path = "REAL_BIOLOGICAL_EDGES.csv"
-        try: return pd.read_csv(path)
-        except: return pd.DataFrame()
-
-    df_master = load_nodes()
-    df_edges = load_edges()
+        # Removed the D:\ path
+        path = "REAL_BIOLOGICAL_EDGES.csv"
+        try: 
+            return pd.read_csv(path)
+        except: 
+            return pd.DataFrame()
 
     def map_individual_pathways(target_df, source_df):
         top_genes = source_df['gene'].head(50).tolist()
